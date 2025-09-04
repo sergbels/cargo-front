@@ -1,0 +1,24 @@
+.button{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border-radius: var(--bradius);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    background-color: inherit;
+}
+
+.button:hover{
+    transform: translateY(-1px);
+}
+
+.button:active{
+    background-color: color-mix(in srgb, var(--background), var(--primary) 20%);
+    transform: translateY(1px);
+}
+

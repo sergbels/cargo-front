@@ -1,0 +1,175 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-family: var(--font-main);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+}
+
+.label {
+  color: var(--onsurface);
+  font-size: var(--text-base);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.inputGroup {
+  display: flex;
+  gap: 8px;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--bradius);
+  transition: var(--transition);
+  box-sizing: border-box;
+}
+
+.countryWrapper {
+  width: 40%;
+}
+
+.cityWrapper {
+  width: 60%;
+}
+
+.inputWrapper.focused {
+  border-color: var(--primary);
+  box-shadow: var(--shadow);
+}
+
+.input {
+  width: 100%;
+  padding: 12px 40px 12px 16px; /* Adjusted padding to accommodate clear button */
+  border: none;
+  background: transparent;
+  color: var(--onsurface);
+  font-size: var(--text-base);
+  font-family: var(--font-main);
+  line-height: var(--leading-normal);
+  outline: none;
+  box-sizing: border-box;
+}
+
+.input::placeholder {
+  color: var(--onsurface-variant);
+}
+
+.clearButton {
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputWrapper:hover .clearButton,
+.inputWrapper.focused .clearButton {
+  display: block;
+}
+
+.clearIcon {
+  width: 16px;
+  height: 16px;
+  color: var(--onsurface-variant);
+}
+
+.clearButton:hover .clearIcon {
+  color: var(--onsurface);
+}
+
+.disabled .inputWrapper {
+  background-color: var(--surface-variant);
+  cursor: not-allowed;
+}
+
+.disabled .input {
+  color: var(--onsurface-variant);
+  cursor: not-allowed;
+}
+
+.disabled .clearButton {
+  display: none;
+}
+
+.error .inputWrapper {
+  border-color: var(--error);
+}
+
+.errorMessage {
+  color: var(--error);
+  font-size: 0.875rem;
+  margin-top: 4px;
+}
+
+.dropdown {
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--bradius);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 10;
+  margin-top: 4px;
+  list-style: none;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.countryDropdown {
+  width: 100%;
+}
+
+.cityDropdown {
+  width: 100%;
+}
+
+.dropdownItem {
+  padding: 8px 16px;
+  cursor: pointer;
+  color: var(--onsurface);
+  font-size: var(--text-base);
+}
+
+.dropdownItem:hover {
+  background-color: var(--surface-variant);
+}
+
+.dropdownItem.active {
+  background-color: var(--primary);
+  color: var(--onprimary);
+}
+
+@media (prefers-color-scheme: dark) {
+  .inputWrapper {
+    background-color: var(--surface);
+  }
+
+  .disabled .inputWrapper {
+    background-color: var(--surface-variant);
+  }
+
+  .dropdown {
+    background-color: var(--surface);
+  }
+
+  .dropdownItem:hover {
+    background-color: var(--surface-variant);
+  }
+
+  .dropdownItem.active {
+    background-color: var(--primary);
+    color: var(--onprimary);
+  }
+}

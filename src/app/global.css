@@ -1,0 +1,338 @@
+:root {
+    --primary: #6C4AB6;  /* Глубокий фиолетово-синий */
+    --primary-hover: #7D5DDB;
+    --secondary: #4D96FF;  /* Чистый аквамариновый */
+    --tertiary: #FF9F45;  /* Тёплый оранжевый */
+    --accent: #FF6B6B;    /* Коралловый акцент */
+
+    /* Текстовые цвета */
+    --onprimary: #FFFFFF;
+    --onsecondary: #FFFFFF;
+    --onbackground: #2D3436;  /* Тёмный грифельный */
+    --onsurface: #2D3436;
+    --onsurface-variant: #636E72;  /* Приглушённый серый */
+
+    /* Фоны */
+    --background: #F9F9F9;  /* Очень светлый фон */
+    --surface: #FFFFFF;
+    --surface-variant: #ECECEC;
+
+    /* Состояния */
+    --success: #4CAF50;  /* Классический зелёный */
+    --warning: #FFC107;  /* Янтарный */
+    --error: #F44336;   /* Ярко-красный */
+    --info: #2196F3;    /* Чистый синий */
+
+    /* Границы */
+    --border: #DFE6E9;  /* Очень светлый серо-голубой */
+    --border-hover: #B2BEC3;
+
+    /* Декоративные элементы */
+    --bradius: 12px;
+    --bradius-sm: 6px;
+    --shadow: 0 3px 10px rgba(45, 52, 54, 0.08);
+    --shadow-md: 0 5px 15px rgba(45, 52, 54, 0.12);
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+    /* Типографика */
+    --font-main: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-heading: "Inter", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+    /* Размеры (modular scale 1.25) */
+    --text-xs: 0.8rem;
+    --text-sm: 0.9rem;
+    --text-base: 1rem;
+    --text-lg: 1.25rem;
+    --text-xl: 1.563rem;
+    --text-2xl: 1.953rem;
+    --text-3xl: 2.441rem;
+
+    /* Межстрочные интервалы */
+    --leading-normal: 1.6;
+    --heading-leading: 1.3;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary: #8D72E1;
+        --primary-hover: #9D8BEB;
+        --secondary: #6BAAFF;
+        --tertiary: #FFB347;
+        --accent: #FF7B7B;
+
+        /* Текстовые цвета */
+        --onprimary: #FFFFFF;
+        --onsecondary: #FFFFFF;
+        --onbackground: #ECF0F1;
+        --onsurface: #ECF0F1;
+        --onsurface-variant: #B2BEC3;
+
+        /* Фоны */
+        --background: #1A1E1F;  /* Тёмный грифельный */
+        --surface: #2D3436;
+        --surface-variant: #3C4648;
+
+        /* Состояния */
+        --success: #66BB6A;
+        --warning: #FFCA28;
+        --error: #EF5350;
+        --info: #42A5F5;
+
+        /* Границы */
+        --border: #3E4A4D;
+        --border-hover: #576569;
+
+        /* Тени */
+        --shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+}
+
+body {
+    background-color: var(--background);
+    color: var(--onbackground);
+    margin: 0;
+    font-size: 18px;
+    font-family: var(--font-main);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+        color-scheme: dark;
+    }
+}
+
+.container {
+    width: 100%;
+    padding-right: 16px;
+    padding-left: 16px;
+    margin-right: auto;
+    margin-left: auto;
+    box-sizing: border-box;
+}
+
+/* Строка сетки */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -8px;
+    margin-left: -8px;
+}
+
+/* Общие стили для колонок */
+[class*="col-"] {
+    padding-right: 8px;
+    padding-left: 8px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* Колонки для мобильных (по умолчанию) */
+.col-xs-1 {
+    flex: 0 0 8.3333%;
+    max-width: 8.3333%;
+}
+.col-xs-2 {
+    flex: 0 0 16.6667%;
+    max-width: 16.6667%;
+}
+.col-xs-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+}
+.col-xs-4 {
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
+}
+.col-xs-5 {
+    flex: 0 0 41.6667%;
+    max-width: 41.6667%;
+}
+.col-xs-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+.col-xs-7 {
+    flex: 0 0 58.3333%;
+    max-width: 58.3333%;
+}
+.col-xs-8 {
+    flex: 0 0 66.6667%;
+    max-width: 66.6667%;
+}
+.col-xs-9 {
+    flex: 0 0 75%;
+    max-width: 75%;
+}
+.col-xs-10 {
+    flex: 0 0 83.3333%;
+    max-width: 83.3333%;
+}
+.col-xs-11 {
+    flex: 0 0 91.6667%;
+    max-width: 91.6667%;
+}
+.col-xs-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+/* Медиа-запросы для разных размеров экранов */
+@media (min-width: 600px) {
+    .col-sm-1 {
+        flex: 0 0 8.3333%;
+        max-width: 8.3333%;
+    }
+    .col-sm-2 {
+        flex: 0 0 16.6667%;
+        max-width: 16.6667%;
+    }
+    .col-sm-3 {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+    .col-sm-4 {
+        flex: 0 0 33.3333%;
+        max-width: 33.3333%;
+    }
+    .col-sm-5 {
+        flex: 0 0 41.6667%;
+        max-width: 41.6667%;
+    }
+    .col-sm-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    .col-sm-7 {
+        flex: 0 0 58.3333%;
+        max-width: 58.3333%;
+    }
+    .col-sm-8 {
+        flex: 0 0 66.6667%;
+        max-width: 66.6667%;
+    }
+    .col-sm-9 {
+        flex: 0 0 75%;
+        max-width: 75%;
+    }
+    .col-sm-10 {
+        flex: 0 0 83.3333%;
+        max-width: 83.3333%;
+    }
+    .col-sm-11 {
+        flex: 0 0 91.6667%;
+        max-width: 91.6667%;
+    }
+    .col-sm-12 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 960px) {
+    .col-md-1 {
+        flex: 0 0 8.3333%;
+        max-width: 8.3333%;
+    }
+    .col-md-2 {
+        flex: 0 0 16.6667%;
+        max-width: 16.6667%;
+    }
+    .col-md-3 {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+    .col-md-4 {
+        flex: 0 0 33.3333%;
+        max-width: 33.3333%;
+    }
+    .col-md-5 {
+        flex: 0 0 41.6667%;
+        max-width: 41.6667%;
+    }
+    .col-md-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    .col-md-7 {
+        flex: 0 0 58.3333%;
+        max-width: 58.3333%;
+    }
+    .col-md-8 {
+        flex: 0 0 66.6667%;
+        max-width: 66.6667%;
+    }
+    .col-md-9 {
+        flex: 0 0 75%;
+        max-width: 75%;
+    }
+    .col-md-10 {
+        flex: 0 0 83.3333%;
+        max-width: 83.3333%;
+    }
+    .col-md-11 {
+        flex: 0 0 91.6667%;
+        max-width: 91.6667%;
+    }
+    .col-md-12 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 1280px) {
+    .col-lg-1 {
+        flex: 0 0 8.3333%;
+        max-width: 8.3333%;
+    }
+    .col-lg-2 {
+        flex: 0 0 16.6667%;
+        max-width: 16.6667%;
+    }
+    .col-lg-3 {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+    .col-lg-4 {
+        flex: 0 0 33.3333%;
+        max-width: 33.3333%;
+    }
+    .col-lg-5 {
+        flex: 0 0 41.6667%;
+        max-width: 41.6667%;
+    }
+    .col-lg-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    .col-lg-7 {
+        flex: 0 0 58.3333%;
+        max-width: 58.3333%;
+    }
+    .col-lg-8 {
+        flex: 0 0 66.6667%;
+        max-width: 66.6667%;
+    }
+    .col-lg-9 {
+        flex: 0 0 75%;
+        max-width: 75%;
+    }
+    .col-lg-10 {
+        flex: 0 0 83.3333%;
+        max-width: 83.3333%;
+    }
+    .col-lg-11 {
+        flex: 0 0 91.6667%;
+        max-width: 91.6667%;
+    }
+    .col-lg-12 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
