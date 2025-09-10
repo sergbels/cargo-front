@@ -156,8 +156,8 @@ const CalcPage: React.FC = () => {
                 }),
                 { length: 0, width: 0, height: 0 }
             );
-
-            const response = await axios.post<ApiResponse>("http://localhost:8080/api/calc", {
+            const url = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080/api/calc"
+            const response = await axios.post<ApiResponse>(url, {
                 from: fromCity,
                 to: toCity,
                 places: cargoList.map((cargo) => ({
