@@ -1,3 +1,5 @@
+import { ApiResponse } from "./page";
+
 export interface DeliveryOption {
     logo: string;
     name: string;
@@ -45,85 +47,32 @@ export const deliveryProviders = [
 
 // Функция для форматирования DeliveryOption
 export const formatDeliveryOptions = (
-    apiResponse: {
-        deliveryToDoor?: Array<{
-            providerKey: string;
-            tariffs: Array<{
-                tariffProviderId: string;
-                tariffId: number;
-                tariffName: string;
-                from: string;
-                deliveryCost: number;
-                deliveryCostOriginal: number;
-                feesIncluded: boolean | null;
-                insuranceFee: number | null;
-                cashServiceFee: number | null;
-                calendarDaysMin: number;
-                calendarDaysMax: number;
-                pickupTypes: number[];
-                deliveryTypes: number[];
-            }>;
-        }>;
-        deliveryToPoint?: Array<{
-            providerKey: string;
-            tariffs: Array<{
-                tariffProviderId: string;
-                tariffId: number;
-                tariffName: string;
-                from: string;
-                deliveryCost: number;
-                deliveryCostOriginal: number;
-                feesIncluded: boolean | null;
-                insuranceFee: number | null;
-                cashServiceFee: number | null;
-                calendarDaysMin: number;
-                calendarDaysMax: number;
-                pickupTypes: number[];
-                deliveryTypes: number[];
-                pointIds: number[];
-            }>;
-        }>;
-    }
+    apiResponse: ApiResponse
 ): DeliveryOption[] => {
     const deliveryOptions: DeliveryOption[] = [];
 
     // Функция для получения данных провайдера
     const getProviderInfo = (providerKey: string) => {
         const provider = deliveryProviders.find((p) => p.key === providerKey);
-        return provider || {
-            key: providerKey,
-            name: providerKey.toUpperCase(), // Заглушка для неизвестных провайдеров
-            logo: "/logos/default.png", // Заглушка для логотипа
-        };
+        return (
+            provider || {
+                key: providerKey,
+                name: providerKey.toUpperCase(), // Заглушка для неизвестных провайдеров
+                logo: "/logos/default.png", // Заглушка для логотипа
+            }
+        );
     };
 
     // Обработка deliveryToDoor
-    apiResponse.deliveryToDoor?.forEach((provider) => {
-        const providerInfo = getProviderInfo(provider.providerKey);
-        provider.tariffs.forEach((tariff) => {
-            const deliveryDate = new Date();
-            deliveryDate.setDate(deliveryDate.getDate() + tariff.calendarDaysMax);
-            deliveryOptions.push({
-                logo: providerInfo.logo,
-                name: providerInfo.name,
-                deliveryDate: deliveryDate.toISOString().split("T")[0],
-                price: tariff.deliveryCost,
-            });
-        });
-    });
-
-    // Обработка deliveryToPoint
-    apiResponse.deliveryToPoint?.forEach((provider) => {
-        const providerInfo = getProviderInfo(provider.providerKey);
-        provider.tariffs.forEach((tariff) => {
-            const deliveryDate = new Date();
-            deliveryDate.setDate(deliveryDate.getDate() + tariff.calendarDaysMax);
-            deliveryOptions.push({
-                logo: providerInfo.logo,
-                name: providerInfo.name,
-                deliveryDate: deliveryDate.toISOString().split("T")[0],
-                price: tariff.deliveryCost,
-            });
+    apiResponse.forEach((tariff) => {
+        const providerInfo = getProviderInfo(tariff.provider);
+        const deliveryDate = new Date();
+        deliveryDate.setDate(deliveryDate.getDate() + tariff.calendarDaysMax);
+        deliveryOptions.push({
+            logo: providerInfo.logo,
+            name: providerInfo.name,
+            deliveryDate: deliveryDate.toISOString().split("T")[0],
+            price: tariff.cost,
         });
     });
 

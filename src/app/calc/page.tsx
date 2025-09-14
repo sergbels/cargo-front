@@ -21,45 +21,52 @@ interface ParsedData {
     endDate?: string;
 }
 
-interface ApiResponse {
-    deliveryToDoor?: Array<{
-        providerKey: string;
-        tariffs: Array<{
-            tariffProviderId: string;
-            tariffId: number;
-            tariffName: string;
-            from: string;
-            deliveryCost: number;
-            deliveryCostOriginal: number;
-            feesIncluded: boolean | null;
-            insuranceFee: number | null;
-            cashServiceFee: number | null;
-            calendarDaysMin: number;
-            calendarDaysMax: number;
-            pickupTypes: number[];
-            deliveryTypes: number[];
-        }>;
-    }>;
-    deliveryToPoint?: Array<{
-        providerKey: string;
-        tariffs: Array<{
-            tariffProviderId: string;
-            tariffId: number;
-            tariffName: string;
-            from: string;
-            deliveryCost: number;
-            deliveryCostOriginal: number;
-            feesIncluded: boolean | null;
-            insuranceFee: number | null;
-            cashServiceFee: number | null;
-            calendarDaysMin: number;
-            calendarDaysMax: number;
-            pickupTypes: number[];
-            deliveryTypes: number[];
-            pointIds: number[];
-        }>;
-    }>;
-}
+export type ApiResponse = {
+    provider: string,
+    cost: number,
+    calendarDaysMin: number,
+    calendarDaysMax: number
+}[]
+
+// interface ApiResponse {
+//     deliveryToDoor?: Array<{
+//         providerKey: string;
+//         tariffs: Array<{
+//             tariffProviderId: string;
+//             tariffId: number;
+//             tariffName: string;
+//             from: string;
+//             deliveryCost: number;
+//             deliveryCostOriginal: number;
+//             feesIncluded: boolean | null;
+//             insuranceFee: number | null;
+//             cashServiceFee: number | null;
+//             calendarDaysMin: number;
+//             calendarDaysMax: number;
+//             pickupTypes: number[];
+//             deliveryTypes: number[];
+//         }>;
+//     }>;
+//     deliveryToPoint?: Array<{
+//         providerKey: string;
+//         tariffs: Array<{
+//             tariffProviderId: string;
+//             tariffId: number;
+//             tariffName: string;
+//             from: string;
+//             deliveryCost: number;
+//             deliveryCostOriginal: number;
+//             feesIncluded: boolean | null;
+//             insuranceFee: number | null;
+//             cashServiceFee: number | null;
+//             calendarDaysMin: number;
+//             calendarDaysMax: number;
+//             pickupTypes: number[];
+//             deliveryTypes: number[];
+//             pointIds: number[];
+//         }>;
+//     }>;
+// }
 
 const CalcPage: React.FC = () => {
     const router = useRouter();
